@@ -1,6 +1,8 @@
+import { ethers } from "ethers";
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
+import Barcode from "react-barcode";
 import { useAccount } from "wagmi";
 import { AddressInput } from "~~/components/scaffold-eth";
 import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
@@ -82,7 +84,7 @@ const Home: NextPage = () => {
               <AddressInput onChange={e => setAddress(e)} />
             </div>
             {/* INPUT WRAPPER */}
-            {/* RAIDO BUTTON */}
+            {/* Radio BUTTON */}
 
             <p className="font-semibold text-xl ml-1 break-words my-1">Choose role</p>
             <select
@@ -99,6 +101,23 @@ const Home: NextPage = () => {
             <button className="btn btn-primary btn-md self-center mt-6" onClick={async () => await writeAsync()}>
               Add User
             </button>
+            <Barcode
+              value={ethers.utils
+                .keccak256(
+                  ethers.utils.toUtf8Bytes(
+                    JSON.stringify({
+                      name: name,
+                      email: email,
+                      address: address,
+                      role: role,
+                    }),
+                  ),
+                )
+                .slice(0, 30)}
+              width={1}
+              format="CODE128"
+              displayValue={true}
+            />
           </div>
         </div>
       </div>
