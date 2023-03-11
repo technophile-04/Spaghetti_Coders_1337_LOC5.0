@@ -4,6 +4,10 @@ import React from "react";
 import { AddressInput } from "~~/components/scaffold-eth";
 
 const Home: NextPage = () => {
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [address, setAddress] = React.useState("");
+
   return (
     <>
       <Head>
@@ -13,7 +17,7 @@ const Home: NextPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-14 mx-14">
         <div className="w-full bg-base-100 rounded-3xl shadow-xl border-2 ">
           <h1 className="text-center mb-8 text-primary">
-            <span className="block text-2xl mb-2 dttext-primary">Add User</span>
+            <span className="block text-2xl mb-2 text-primary">Add User</span>
             <span className="block text-4xl font-bold">Product all products</span>
           </h1>
         </div>
@@ -49,10 +53,11 @@ const Home: NextPage = () => {
             {/* INPUT WRAPPER */}
             <div className="flex flex-col space-y-1 w-full my-1">
               <p className="font-semibold text-xl ml-1 my-0 break-words">Address</p>
-              <AddressInput />
+              <AddressInput onChange={e => setAddress(e)} />
             </div>
             {/* INPUT WRAPPER */}
           </div>
+          <button className="btn btn-primary btn-md">Add User</button>
         </div>
       </div>
     </>
