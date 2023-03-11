@@ -18,6 +18,7 @@ function addProduct() {
       const [address, setAddress] = useState("")
       const [productUri, setProductUri] = useState("")
       const [loading, setLoading] = useState(false)
+      console.log(new Date(manuDate)?.getTime());
       const imageUpload = async e => {
             const file = e.target.files[0];
             try {
@@ -53,7 +54,7 @@ function addProduct() {
                         "name":`${productName}.json`
                   },
                   'pinataContent':{
-                        productName,productType,barCodeId,address,manuDate,manuName,expDate,price,desc,image
+                        expDate:new Date(expDate)?.getTime(),productName,productType,barCodeId,address,manuDate:new Date(manuDate)?.getTime(),manuName,price,desc,image
                   }
             })
             const resFile = await axios({
@@ -93,9 +94,10 @@ const submit = async e => {
       <div className="mx-auto my-14">
         <form onSubmit={submit} className="md:w-[500px] w-[300px] lg:w-[800px] bg-base-100 rounded-3xl shadow-xl border-2 ">
           <p className="block text-primary text-3xl mb-2 font-semibold text-center">Add Product</p>
+          <p className="font-semibold text-xl ml-1 my-0 break-words px-4">Click to upload</p>
           {!loading ? (
-            <label className='flex justify-center' htmlFor='forId'>
-                  <ArrowUpOnSquareIcon className="h-12 cursor-pointer w-12"/>
+            <label className='' htmlFor='forId'>
+                  <ArrowUpOnSquareIcon className="h-12 mx-4 cursor-pointer w-12"/>
             </label>
           ) : (
             <div className='flex justify-center'><progress className="progress my-3 text-primary w-56 "></progress></div>
