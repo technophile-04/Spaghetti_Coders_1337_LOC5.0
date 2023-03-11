@@ -12,18 +12,10 @@ contract Products {
 
   // Events
 
-  event NewProduct(
-    string name,
-    string manufacturerName,
-    string scientificName,
-    string barcodeId,
-    uint256 manDateEpoch,
-    uint256 expDateEpoch
-  );
+  event NewProduct(string name, string manufacturerName, string barcodeId, uint256 manDateEpoch, uint256 expDateEpoch);
   event ProductOwnershipTransfer(
     string name,
     string manufacturerName,
-    string scientificName,
     string barcodeId,
     string buyerName,
     string buyerEmail
@@ -58,7 +50,6 @@ contract Products {
     emit NewProduct(
       product_.name,
       product_.manufacturerName,
-      product_.scientificName,
       product_.barcodeId,
       product_.manDateEpoch,
       product_.expDateEpoch
@@ -89,7 +80,6 @@ contract Products {
     emit ProductOwnershipTransfer(
       product_.name,
       product_.manufacturerName,
-      product_.scientificName,
       product_.barcodeId,
       party_.name,
       party_.email

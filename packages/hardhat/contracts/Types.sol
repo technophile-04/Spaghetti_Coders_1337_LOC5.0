@@ -18,11 +18,10 @@ library Types {
   }
 
   enum ProductType {
-    BCG, // 0
-    RNA, // 1
-    MRNA, // 2
-    MMR, // 3
-    NasalFlu // 4
+    JEWELRY, // 0
+    CLOTHES, // 1
+    WINE, // 2
+    ACCESSORIES // 3
   }
 
   struct UserHistory {
@@ -46,11 +45,7 @@ library Types {
     bool isInBatch; // few products will be packed & sold in batches
     uint256 batchCount; // QTY that were packed in single batch
     string barcodeId;
-    string productImage;
+    string productMetaDataURI;
     ProductType productType;
-    string scientificName;
-    string usage;
-    string[] composition;
-    string[] sideEffects;
   }
 }
