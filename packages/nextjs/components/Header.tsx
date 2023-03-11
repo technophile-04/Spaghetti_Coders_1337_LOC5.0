@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaucetButton } from "~~/components/scaffold-eth";
@@ -31,10 +31,37 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const burgerMenuRef = useRef<HTMLDivElement>(null);
+  const [counter, setCounter] = useState(0);
   useOutsideClick(
     burgerMenuRef,
     useCallback(() => setIsDrawerOpen(false), []),
   );
+  useEffect(() => {
+    if (counter === 1) {
+      console.log("counter", counter);
+      var addScript = document.createElement("script");
+      addScript.setAttribute("src", "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit");
+      document.body.appendChild(addScript);
+      window.googleTranslateElementInit = googleTranslateElementInit;
+      setCounter(2);
+    }
+    setCounter(1);
+  }, [counter]);
+
+  const googleTranslateElementInit = () => {
+    // if (counter === 1) {
+    console.log("googleTranslateElementInit");
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        // includedLanguages: "en,ms,ta,zh-CN", // include this for selected languages
+        layout: window.google.translate.TranslateElement.InlineLayout.VERTICAL,
+      },
+      "google_translate_element",
+    );
+    // setCounter(2);
+    // }
+  };
 
   const navLinks = (
     <>
@@ -55,9 +82,16 @@ export default function Header() {
       </li>
       <li>
         <NavLink href="/addProduct">
-          <ArrowUpOnSquareIcon className="h-4 w-4"/>
+          <ArrowUpOnSquareIcon className="h-4 w-4" />
           Add Product
         </NavLink>
+      </li>
+      <li>
+        {/* <div> */}
+        {/* <ArrowUpOnSquareIcon className="h-2 w-2" /> */}
+        {/* <p>Select Language</p> */}
+        <div className="mtx-3 focus:outline-none text-center " id="google_translate_element"></div>
+        {/* </div> */}
       </li>
     </>
   );

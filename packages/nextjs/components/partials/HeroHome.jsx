@@ -76,6 +76,7 @@ function HeroHome() {
                   class="giphy-embed"
                   allowFullScreen
                 ></iframe>
+
                 {/* <svg
                   className="absolute inset-0 max-w-full mx-auto md:max-w-none h-auto"
                   width="768"
