@@ -1,5 +1,3 @@
-import { log } from "console";
-// import type { NextPage } from "next";
 import Head from "next/head";
 import React, { useState } from "react";
 
