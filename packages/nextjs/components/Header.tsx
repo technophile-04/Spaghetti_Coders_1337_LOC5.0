@@ -6,6 +6,7 @@ import RainbowKitCustomConnectButton from "~~/components/scaffold-eth/RainbowKit
 import { Bars3Icon, BugAntIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
+import { BanknotesIcon } from "@heroicons/react/20/solid";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const router = useRouter();
@@ -52,6 +53,13 @@ export default function Header() {
           Example UI
         </NavLink>
       </li>
+      <li>
+        <NavLink href="/products">
+          <BanknotesIcon className="h-4 w-4" />
+          Product
+        </NavLink>
+      </li>
+    
     </>
   );
 
