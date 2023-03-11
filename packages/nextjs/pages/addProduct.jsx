@@ -10,7 +10,7 @@ function addProduct() {
       const [manuName, setManuName] = useState("")
       const [manuDate, setManuDate] = useState("")
       const [expDate, setExpDate] = useState("")
-      const [productType, setProductType] = useState("")
+      const [productType, setProductType] = useState("0")
       const [image, setImage] = useState("")
       const [price, setPrice] = useState("")
       const [desc, setDesc] = useState("")
