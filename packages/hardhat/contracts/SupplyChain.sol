@@ -48,11 +48,11 @@ contract SupplyChain is Users, Products {
     return getPartyDetails(id_);
   }
 
-  function getMyDetails() public view returns (Types.UserDetails memory) {
-    return getPartyDetails(msg.sender);
+  function getMyDetails(address id_) public view returns (Types.UserDetails memory) {
+    return getPartyDetails(id_);
   }
 
-  function getMyUsersList() public view returns (Types.UserDetails[] memory usersList_) {
-    return getMyPartyList(msg.sender);
+  function getMyUsersList(address id_) public view returns (Types.UserDetails[] memory usersList_) {
+    return getMyPartyList(id_);
   }
 }

@@ -1,12 +1,36 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
+import { useAccount } from "wagmi";
 import { AddressInput } from "~~/components/scaffold-eth";
+import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 const Home: NextPage = () => {
+  const { address: connectedAddress } = useAccount();
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [address, setAddress] = React.useState("");
+  const [role, setRole] = React.useState("");
+
+  const { writeAsync } = useScaffoldContractWrite("SupplyChain", "addParty", [
+    {
+      role: parseInt(role, 10),
+      id_: address,
+      name: name,
+      email: email,
+    },
+  ]);
+
+  const { data: usersList, isLoading: isUserLoading } = useScaffoldContractRead(
+    "SupplyChain",
+    "getMyUsersList",
+    [connectedAddress],
+    {
+      watch: true,
+    },
+  );
+  console.log("⚡️ ~ file: addUser.tsx:25 ~ isUserLoading:", isUserLoading);
+  console.log("⚡️ ~ file: addUser.tsx:25 ~ usersList:", usersList);
 
   return (
     <>
@@ -31,6 +55,7 @@ const Home: NextPage = () => {
                 className={`flex items-center justify-between border-2 border-base-300 bg-base-200 rounded-full text-accent w-full`}
               >
                 <input
+                  onChange={e => setName(e.target.value)}
                   type="text"
                   className="input input-ghost focus:outline-none focus:bg-transparent focus:text-gray-400 h-[2.2rem] min-h-[2.2rem] border w-full font-medium placeholder:text-accent/50 text-gray-400"
                 />
@@ -44,6 +69,7 @@ const Home: NextPage = () => {
                 className={`flex items-center justify-between border-2 border-base-300 bg-base-200 rounded-full text-accent w-full`}
               >
                 <input
+                  onChange={e => setEmail(e.target.value)}
                   type="text"
                   className="input input-ghost focus:outline-none focus:bg-transparent focus:text-gray-400 h-[2.2rem] min-h-[2.2rem] border w-full font-medium placeholder:text-accent/50 text-gray-400"
                 />
@@ -56,8 +82,24 @@ const Home: NextPage = () => {
               <AddressInput onChange={e => setAddress(e)} />
             </div>
             {/* INPUT WRAPPER */}
+            {/* RAIDO BUTTON */}
+
+            <p className="font-semibold text-xl ml-1 break-words my-1">Choose role</p>
+            <select
+              className="select select-bordered w-full max-w-xs border-base-300 focus:border-none"
+              onChange={e => setRole(e.target.value)}
+            >
+              <option disabled selected>
+                Select role
+              </option>
+              <option value={1}>Supplier</option>
+              <option value={2}>Vendor</option>
+              <option value={3}>Customer</option>
+            </select>
+            <button className="btn btn-primary btn-md self-center mt-6" onClick={async () => await writeAsync()}>
+              Add User
+            </button>
           </div>
-          <button className="btn btn-primary btn-md">Add User</button>
         </div>
       </div>
     </>
