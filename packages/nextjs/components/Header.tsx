@@ -3,10 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaucetButton } from "~~/components/scaffold-eth";
 import RainbowKitCustomConnectButton from "~~/components/scaffold-eth/RainbowKitCustomConnectButton";
-import { Bars3Icon, BugAntIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
-import { BanknotesIcon } from "@heroicons/react/20/solid";
+import { BanknotesIcon, UserPlusIcon } from "@heroicons/react/20/solid";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const router = useRouter();
@@ -42,24 +42,17 @@ export default function Header() {
         <NavLink href="/">Home</NavLink>
       </li>
       <li>
-        <NavLink href="/debug">
-          <BugAntIcon className="h-4 w-4" />
-          Debug Contracts
-        </NavLink>
-      </li>
-      <li>
-        <NavLink href="/example-ui">
-          <SparklesIcon className="h-4 w-4" />
-          Example UI
-        </NavLink>
-      </li>
-      <li>
         <NavLink href="/products">
           <BanknotesIcon className="h-4 w-4" />
           Product
         </NavLink>
       </li>
-    
+      <li>
+        <NavLink href="/addUser">
+          <UserPlusIcon className="h-4 w-4" />
+          Add User
+        </NavLink>
+      </li>
     </>
   );
 

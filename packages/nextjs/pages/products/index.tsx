@@ -4,65 +4,64 @@ import Link from "next/link";
 import React from "react";
 
 const colors = {
-  0 : "badge-warning",
-  1 : "badge-info",
-  2 : "badge-error",
-  3 : "badge-primary"
-}
+  0: "badge-warning",
+  1: "badge-info",
+  2: "badge-error",
+  3: "badge-primary",
+};
 const type = {
-  0 : "JEWELRY",
-  1 : "CLOTHES",
-  2 : "WINE",
-  3 : "ACCESSORIES"
-}
-  const data = [
-    {
-      id: "1",
-      image:
-        "https://cdn.shopify.com/s/files/1/0613/8622/7909/products/PimaPoloBlue-4_ed7c70a7-32d5-4265-8f59-00096dfff9c5_720x.jpg?v=1655275332",
-      scan:"https://www.drupal.org/files/styles/grid-3-2x/public/project-images/qrcode-module_0.png?itok=ZVIdRXkv",
-      title:"Shirt Op",
-      manufacturerName:"Xyz",
-      productType: 0
-    },
+  0: "JEWELRY",
+  1: "CLOTHES",
+  2: "WINE",
+  3: "ACCESSORIES",
+};
+const data = [
+  {
+    id: "1",
+    image:
+      "https://cdn.shopify.com/s/files/1/0613/8622/7909/products/PimaPoloBlue-4_ed7c70a7-32d5-4265-8f59-00096dfff9c5_720x.jpg?v=1655275332",
+    scan: "https://www.drupal.org/files/styles/grid-3-2x/public/project-images/qrcode-module_0.png?itok=ZVIdRXkv",
+    title: "Shirt Op",
+    manufacturerName: "Xyz",
+    productType: 0,
+  },
 
-    {
-      id: "2",
-      image: "https://cdn.shopify.com/s/files/1/2116/1923/products/LD21317590_1Heroimage.jpg?v=1616148851",
-      scan:"https://www.drupal.org/files/styles/grid-3-2x/public/project-images/qrcode-module_0.png?itok=ZVIdRXkv",
-      title:"Shirt ooopp",
-      manufacturerName:"Xyze",
-      productType: 1
-    },
-    {
-      id: "3",
-      image: "https://image.uniqlo.com/UQ/ST3/in/imagesgoods/456889/item/ingoods_16_456889.jpg?width=750",
-      scan:"https://www.drupal.org/files/styles/grid-3-2x/public/project-images/qrcode-module_0.png?itok=ZVIdRXkv",
-      title:"Shirt Op",
-      manufacturerName:"Xyzw",
-      productType:2
-    },
-    {
-      id: "4",
-      image:
-        "https://twicpics.celine.com/product-prd/images/large/2Y321670Q.38AW_1_SUM21_V10.jpg?twic=v1/cover=1:1/resize-max=720",
-        scan:"https://www.drupal.org/files/styles/grid-3-2x/public/project-images/qrcode-module_0.png?itok=ZVIdRXkv",
-        title:"Shirt Oooofff",
-        manufacturerName:"Xyzer",
-        productType:3 
-    },
-    {
-      id: "5",
-      image:
-        "https://images.bewakoof.com/t1080/men-s-green-lost-reality-typography-super-loose-fit-hoodie-504132-1670935980-2.jpg?tr=q-100",
-        scan:"https://www.drupal.org/files/styles/grid-3-2x/public/project-images/qrcode-module_0.png?itok=ZVIdRXkv",
-        title:"Shirt Ooooppph",
-        manufacturerName:"Xyzyu",
-        productType:0
-    },
-  ] as const;
+  {
+    id: "2",
+    image: "https://cdn.shopify.com/s/files/1/2116/1923/products/LD21317590_1Heroimage.jpg?v=1616148851",
+    scan: "https://www.drupal.org/files/styles/grid-3-2x/public/project-images/qrcode-module_0.png?itok=ZVIdRXkv",
+    title: "Shirt ooopp",
+    manufacturerName: "Xyze",
+    productType: 1,
+  },
+  {
+    id: "3",
+    image: "https://image.uniqlo.com/UQ/ST3/in/imagesgoods/456889/item/ingoods_16_456889.jpg?width=750",
+    scan: "https://www.drupal.org/files/styles/grid-3-2x/public/project-images/qrcode-module_0.png?itok=ZVIdRXkv",
+    title: "Shirt Op",
+    manufacturerName: "Xyzw",
+    productType: 2,
+  },
+  {
+    id: "4",
+    image:
+      "https://twicpics.celine.com/product-prd/images/large/2Y321670Q.38AW_1_SUM21_V10.jpg?twic=v1/cover=1:1/resize-max=720",
+    scan: "https://www.drupal.org/files/styles/grid-3-2x/public/project-images/qrcode-module_0.png?itok=ZVIdRXkv",
+    title: "Shirt Oooofff",
+    manufacturerName: "Xyzer",
+    productType: 3,
+  },
+  {
+    id: "5",
+    image:
+      "https://images.bewakoof.com/t1080/men-s-green-lost-reality-typography-super-loose-fit-hoodie-504132-1670935980-2.jpg?tr=q-100",
+    scan: "https://www.drupal.org/files/styles/grid-3-2x/public/project-images/qrcode-module_0.png?itok=ZVIdRXkv",
+    title: "Shirt Ooooppph",
+    manufacturerName: "Xyzyu",
+    productType: 0,
+  },
+] as const;
 const Products: NextPage = () => {
-
   return (
     <>
       <Head>
@@ -84,12 +83,12 @@ const Products: NextPage = () => {
                 <img src={d.image} className="h-[300px] mt-1 object-contain rounded-3xl w-full"></img>
                 <div className="p-4">
                   <div className="flex items-center text-[22px] justify-between">
-                  <p className="font-bold text-gray-700">{d.title}</p>
-                    <p className={`text-white badge text-[17px] mr-2 ${colors[d.productType]}`}>{type[d.productType]}</p>
+                    <p className="font-bold text-gray-700">{d.title}</p>
+                    <p className={`text-white badge text-[17px] mr-2 ${colors[d.productType]}`}>
+                      {type[d.productType]}
+                    </p>
                   </div>
-                  <p className="text-[#7C7C80] font-[15px]">
-                   Manufacturer Name: {d?.manufacturerName}
-                  </p>
+                  <p className="text-[#7C7C80] font-[15px]">Manufacturer Name: {d?.manufacturerName}</p>
 
                   <Link
                     href="/products/356"
