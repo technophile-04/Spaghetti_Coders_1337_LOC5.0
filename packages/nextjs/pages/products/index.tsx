@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 
-const Home: NextPage = () => {
+const Products: NextPage = () => {
   return (
     <>
       <Head>
@@ -21,4 +21,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Products;
