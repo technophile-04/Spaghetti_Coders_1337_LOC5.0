@@ -88,8 +88,20 @@ module.exports = {
     ],
   },
   theme: {
+    screens: {
+      xs: "480px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
     // Extend Tailwind classes (e.g. font-bai-jamjuree, animate-grow)
     extend: {
+      inset: {
+        17: "68px",
+        26: "104px",
+      },
       fontFamily: {
         "bai-jamjuree": ["Bai Jamjuree", "sans-serif"],
       },
