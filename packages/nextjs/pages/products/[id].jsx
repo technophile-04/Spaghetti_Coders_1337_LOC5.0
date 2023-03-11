@@ -1,7 +1,7 @@
 import { log } from "console";
-import type { NextPage } from "next";
+// import type { NextPage } from "next";
 import Head from "next/head";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const data = [
   {
@@ -38,7 +38,7 @@ const pHistory = {
   ],
 };
 
-const Product: NextPage = () => {
+const Product = () => {
   const [product, setProduct] = useState(data[0]);
   const [productMetaData, setProductMetaData] = useState({
     pricePerItem: 200,
