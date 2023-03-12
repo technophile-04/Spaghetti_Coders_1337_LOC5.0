@@ -142,7 +142,8 @@ const Products = () => {
                           X
                         </label>
                       </div>
-                      <img className="w-full h-[400px]" src={d?.scan} alt="Profile" />
+                      <p className="text-2xl font-semibold">Product Barcode Id</p>
+                      <p className="text-xl">{d?.barcodeId}</p>
                     </div>
                   </div>
                 </div>

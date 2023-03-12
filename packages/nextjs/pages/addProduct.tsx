@@ -23,7 +23,7 @@ function AddProduct() {
   const [address, setAddress] = useState("");
   const [productUri, setProductUri] = useState("");
   const [loading, setLoading] = useState(false);
-  const [uploading, setUploading] = useState(false)
+  const [uploading, setUploading] = useState(false);
 
   const { writeAsync, isLoading } = useScaffoldContractWrite("SupplyChain", "addProduct", [
     {
@@ -95,7 +95,7 @@ function AddProduct() {
   async function uploadToIPFS() {
     if (!desc || !price || !image) return;
     // setLoading('loading');
-    setUploading(true)
+    setUploading(true);
     try {
       const jsonData = JSON.stringify({
         pinataMetadata: {
@@ -136,7 +136,7 @@ function AddProduct() {
       });
       const tokenUrl = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
       setProductUri(tokenUrl);
-      setUploading(false)
+      setUploading(false);
       return tokenUrl;
     } catch (error) {
       console.log("error in uploading json ", error);
@@ -149,13 +149,6 @@ function AddProduct() {
       const uri = await uploadToIPFS();
       console.log("uri ", uri);
       console.log("⚡️ ~ file: addProduct.tsx:146 ~ submit ~ uri:", uri);
-      setDesc("")
-      setPrice("")
-      setProductName("")
-      setProductType("")
-      setManuDate("")
-      setExpDate("")
-      setManuName("")
 
       toast.success("Product uploaded successfully");
     } catch (error) {
@@ -177,9 +170,7 @@ function AddProduct() {
           {image.length === 0 && <p className="font-semibold text-xl ml-1 my-0 break-words px-4">Click to upload</p>}
           {!loading ? (
             <label className="" htmlFor="forId">
-              {image.length === 0 && (
-                <ArrowUpOnSquareIcon className="h-12 mx-4 cursor-pointer w-12" />
-              )}             
+              {image.length === 0 && <ArrowUpOnSquareIcon className="h-12 mx-4 cursor-pointer w-12" />}
             </label>
           ) : (
             <div className="flex justify-center">
