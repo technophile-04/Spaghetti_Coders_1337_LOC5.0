@@ -39,11 +39,9 @@ const pHistory = {
 };
 
 const Product = () => {
-  const [product, setProduct] = useState(data[0]);
   const { query } = useRouter();
 
-  const { data: productMetaData } = useScaffoldContractRead("SupplyChain", "getSingleProduct", [query.id]);
-  console.log("⚡️ ~ file: [id].tsx:52 ~ Product ~ data:", productMetaData[0]);
+  const { data: product } = useScaffoldContractRead("SupplyChain", "getSingleProduct", [query.id]);
 
   const [productHistory, setProductHistory] = useState(pHistory);
 
@@ -78,12 +76,12 @@ const Product = () => {
               <img
                 alt="ecommerce"
                 className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
-                src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"
+                src={product && product[0]?.imageURI}
               />
               <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                 <h2 className="text-sm title-font text-gray-500 tracking-widest">{}</h2>
                 <h1 className="text-gray-900 text-3xl title-font  mb-1 font-bold text-primary-content">
-                  {product?.name}
+                  {product && product[0]?.name}
                 </h1>
                 <div className="flex mb-4">
                   {/* <span className="flex items-center"> */}
@@ -187,26 +185,27 @@ const Product = () => {
                 <div className="flex flex-col items-start ">
                   <div className="flex justify-evenly font-semibold items-center text-primary-content text-center gap-8 ">
                     <h3>Manufacturer name:</h3>
-                    <p className="text-sm text-primary tracking-widest">{product?.manufacturerName}</p>
+                    <p className="text-sm text-primary tracking-widest">{product && product[0]?.manufacturerName}</p>
                   </div>
                   <div className="flex justify-evenly font-semibold items-center text-primary-content text-center gap-8">
                     <h3>Manufacturing Date:</h3>
                     <p className="text-sm text-primary tracking-widest">
-                      {/* {new Date(product?.manDateEpoch)?.toLocaleString} */}
-                      {product?.manDateEpoch}
+                      {product && getDate(product[0]?.manDateEpoch.toString())}
                     </p>
                   </div>
                   <div className="flex justify-evenly font-semibold items-center text-primary-content text-center gap-8">
                     <h3>Expiry Date :</h3>
-                    <p className="text-sm text-primary tracking-widest">{product?.expDateEpoch}</p>
+                    <p className="text-sm text-primary tracking-widest">
+                      {product && getDate(product[0]?.expDateEpoch.toString())}
+                    </p>
                   </div>
                   <div className="flex justify-evenly font-semibold items-center text-primary-content text-center gap-8">
                     <h3>Barcode Id:</h3>
-                    <p className="text-sm text-primary tracking-widest">{product?.barcodeId}</p>
+                    <p className="text-sm text-primary tracking-widest">{product && product[0]?.barcodeId}</p>
                   </div>
                   <div className="flex justify-evenly font-semibold items-center text-primary-content text-center gap-8">
                     <h3>Manufacturer name:</h3>
-                    <p className="text-sm text-primary tracking-widest">{product?.manufacturerName}</p>
+                    <p className="text-sm text-primary tracking-widest">{product && product[0]?.manufacturerName}</p>
                   </div>
                   {/* <div>
                     <h3 className="font-semibold">Description</h3>
@@ -244,7 +243,7 @@ const Product = () => {
                   </div>
                 </div>
                 <div className="flex justify-between">
-                  <span className="title-font font-medium text-2xl text-gray-900">₹ {productMetaData?.price}</span>
+                  <span className="title-font font-medium text-2xl text-gray-900">₹ {200}</span>
                   <label htmlFor="my-modal-6" className="flex items-center space-x-3">
                     <div className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded cursor-pointer">
                       View Barcode
