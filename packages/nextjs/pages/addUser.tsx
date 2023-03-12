@@ -101,23 +101,6 @@ const Home: NextPage = () => {
             <button className="btn btn-primary btn-md self-center mt-6" onClick={async () => await writeAsync()}>
               Add User
             </button>
-            <Barcode
-              value={ethers.utils
-                .keccak256(
-                  ethers.utils.toUtf8Bytes(
-                    JSON.stringify({
-                      name: name,
-                      email: email,
-                      address: address,
-                      role: role,
-                    }),
-                  ),
-                )
-                .slice(0, 30)}
-              width={1}
-              format="CODE128"
-              displayValue={true}
-            />
           </div>
         </div>
       </div>

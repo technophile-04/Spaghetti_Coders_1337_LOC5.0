@@ -2,6 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
+import Spinner from "~~/components/Spinner";
+import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 
 const colors = {
   0: "badge-warning",
@@ -62,6 +64,9 @@ const data = [
   },
 ] as const;
 const Products: NextPage = () => {
+  const { data, isLoading } = useScaffoldContractRead("SupplyChain", "getAllProducts");
+  console.log("⚡️ ~ file: index.tsx:68 ~ data:", data);
+
   return (
     <>
       <Head>
@@ -77,45 +82,47 @@ const Products: NextPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-8">
-          {data.map(d => (
-            <div key={d.id} className="w-full bg-white rounded-3xl shadow-xl overflow-hidden">
-              <div className="border rounded-3xl">
-                <img src={d.image} className="h-[300px] mt-1 object-contain rounded-3xl w-full"></img>
-                <div className="p-4">
-                  <div className="flex items-center text-[22px] justify-between">
-                    <p className="font-bold text-gray-700">{d.title}</p>
-                    <p className={`text-white badge text-[17px] mr-2 ${colors[d.productType]}`}>
-                      {type[d.productType]}
-                    </p>
-                  </div>
-                  <p className="text-[#7C7C80] font-[15px]">Manufacturer Name: {d?.manufacturerName}</p>
+          {isLoading && <Spinner />}
+          {data &&
+            data.map(d => (
+              <div key={d.barcodeId} className="w-full bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div className="border rounded-3xl">
+                  <img src={d.image} className="h-[300px] mt-1 object-contain rounded-3xl w-full"></img>
+                  <div className="p-4">
+                    <div className="flex items-center text-[22px] justify-between">
+                      <p className="font-bold text-gray-700">{d.title}</p>
+                      <p className={`text-white badge text-[17px] mr-2 ${colors[d.productType]}`}>
+                        {type[d.productType]}
+                      </p>
+                    </div>
+                    <p className="text-[#7C7C80] font-[15px]">Manufacturer Name: {d?.manufacturerName}</p>
 
-                  <Link
-                    href="/products/356"
-                    className="block mt-10 w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-primary rounded-[14px]  focus:outline-none focus:ring focus:ring-opacity-80"
-                  >
-                    View Details
-                  </Link>
-                  <label htmlFor="my-modal-6" className="flex items-center space-x-3">
-                    <div className="block text-primary cursor-pointer mt-1.5 w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform rounded-[14px] hover:bg-[#F2ECE7] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80">
-                      View QR-Code
+                    <Link
+                      href={`/products/${d.barcodeId}`}
+                      className="block mt-10 w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-primary rounded-[14px]  focus:outline-none focus:ring focus:ring-opacity-80"
+                    >
+                      View Details
+                    </Link>
+                    <label htmlFor="my-modal-6" className="flex items-center space-x-3">
+                      <div className="block text-primary cursor-pointer mt-1.5 w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform rounded-[14px] hover:bg-[#F2ECE7] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80">
+                        View QR-Code
+                      </div>
+                    </label>
+                  </div>
+                  <input type="checkbox" id="my-modal-6" className="modal-toggle" />
+                  <div className="modal modal-middle">
+                    <div className="modal-box">
+                      <div className="flex justify-end mb-[10px]">
+                        <label htmlFor="my-modal-6" className="text-[30px] cursor-pointer">
+                          X
+                        </label>
+                      </div>
+                      <img className="w-full h-[400px]" src={d?.scan} alt="Profile" />
                     </div>
-                  </label>
-                </div>
-                <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-                <div className="modal modal-middle">
-                  <div className="modal-box">
-                    <div className="flex justify-end mb-[10px]">
-                      <label htmlFor="my-modal-6" className="text-[30px] cursor-pointer">
-                        X
-                      </label>
-                    </div>
-                    <img className="w-full h-[400px]" src={d?.scan} alt="Profile" />
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </>
