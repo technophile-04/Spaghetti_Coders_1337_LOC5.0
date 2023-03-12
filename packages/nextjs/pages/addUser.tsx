@@ -1,3 +1,4 @@
+import { FolderIcon, InboxArrowDownIcon, InboxIcon } from "@heroicons/react/20/solid";
 import { ethers } from "ethers";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -40,12 +41,31 @@ const Home: NextPage = () => {
         <title>Supply-chain Luxury Goods</title>
         <meta name="description" content="Created with 🏗 scaffold-eth" />
       </Head>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-14 mx-14">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 my-14 mx-3">
         <div className="w-full bg-base-100 rounded-3xl shadow-xl border-2 ">
           <h1 className="text-center mb-8 text-primary">
             <span className="block text-2xl mb-2 text-primary">Add User</span>
-            <span className="block text-4xl font-bold">Product all products</span>
+            <span className="block text-4xl mx-1 font-bold">Product all products</span>
           </h1>
+          {
+            !isUserLoading?<div className="mx-14 h-[332px] overflow-x-scroll">
+            {usersList?.map(l => (
+                <div className="my-2 space-y-2" key={l?._id}>  
+                    <div className=" capitalize text-[20px]">{l?.name}</div>
+                    <div className="flex items-center h-fit">
+                      <InboxIcon className="md:w-6 md:h-6 w-8 h-8 mr-2" />
+                      <div className="break-words overflow-hidden"> {l?.email}</div>
+                     
+                    </div>
+                    <div className="flex items-center">
+                      <FolderIcon className="md:w-6 md:h-6 w-8 h-8 mr-2" />
+                      <div className="break-words overflow-hidden">{l?.id_}</div>
+
+                    </div>                  
+                 </div>
+            ))}
+            </div>:<div className='flex md:h-full h-32 mt-12 mx-4 justify-center'><progress className="progress my-3 text-primary w-56 "></progress></div>
+          }
         </div>
         <div className="w-full bg-base-100 rounded-3xl shadow-xl border-2 ">
           <p className="block text-primary text-3xl mb-2 font-semibold text-center">Add User</p>
