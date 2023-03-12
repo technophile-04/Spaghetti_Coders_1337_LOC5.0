@@ -45,6 +45,7 @@ library Types {
     bool isInBatch; // few products will be packed & sold in batches
     uint256 batchCount; // QTY that were packed in single batch
     string barcodeId;
+    string imageURI;
     string productMetaDataURI;
     ProductType productType;
   }

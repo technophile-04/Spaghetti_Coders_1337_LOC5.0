@@ -1,5 +1,7 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 
 const data = [
   {
@@ -38,12 +40,10 @@ const pHistory = {
 
 const Product = () => {
   const [product, setProduct] = useState(data[0]);
-  const [productMetaData, setProductMetaData] = useState({
-    pricePerItem: 200,
-    price: 250,
-    Description: " A very good product ",
-    ImageUri: "https://www.whitmorerarebooks.com/pictures/medium/2465.jpg",
-  });
+  const { query } = useRouter();
+
+  const { data: productMetaData } = useScaffoldContractRead("SupplyChain", "getSingleProduct", [query.id]);
+  console.log("⚡️ ~ file: [id].tsx:52 ~ Product ~ data:", productMetaData[0]);
 
   const [productHistory, setProductHistory] = useState(pHistory);
 
