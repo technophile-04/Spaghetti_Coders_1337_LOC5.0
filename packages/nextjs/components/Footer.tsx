@@ -26,7 +26,7 @@ export default function Footer() {
             )}
             {configuredNetwork.id === hardhat.id && <Faucet />}
           </div>
-          <SwitchTheme className="pointer-events-auto" />
+          <SwitchTheme className="pointer-events-auto mr-16" />
         </div>
       </div>
     </div>

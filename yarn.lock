@@ -5,6 +5,13 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@alan-ai/alan-sdk-web@npm:^1.8.43":
+  version: 1.8.43
+  resolution: "@alan-ai/alan-sdk-web@npm:1.8.43"
+  checksum: df46aca5f5490a296c77a41ad7c74541b380597f81b8facc2ffce774db23ac8c0a4e6c746bdb55201e447a2f9ea09030f535f6b91919632afc865f004f99cb17
+  languageName: node
+  linkType: hard
+
 "@babel/compat-data@npm:^7.17.7, @babel/compat-data@npm:^7.19.3":
   version: 7.19.3
   resolution: "@babel/compat-data@npm:7.19.3"
@@ -1647,6 +1654,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@se-2/nextjs@workspace:packages/nextjs"
   dependencies:
+    "@alan-ai/alan-sdk-web": ^1.8.43
     "@ethersproject/networks": ^5.7.1
     "@ethersproject/web": ^5.7.1
     "@heroicons/react": ^2.0.11
