@@ -43,6 +43,7 @@ function AddProduct() {
           ),
         )
         .slice(0, 30),
+      imageURI: image,
       productMetaDataURI: productUri,
       productType: parseInt(productType, 10),
     },
