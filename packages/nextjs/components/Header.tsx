@@ -126,7 +126,7 @@ export default function Header() {
             <Image alt="SE2 logo" className="cursor-pointer" fill src="logo.svg" />
           </Link>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">Scaffold-eth</span>
+            <span className="font-bold text-md leading-tight">Smart-chain</span>
             <span className="text-xs">Ethereum dev stack</span>
           </div>
         </div>

@@ -106,7 +106,7 @@ const Products = () => {
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-8">
+        {data?.length !== 0?<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-8">
           {isLoading && <Spinner />}
           {data &&
             data?.map(d => (
@@ -149,7 +149,7 @@ const Products = () => {
                 </div>
               </div>
             ))}
-        </div>
+        </div>:<div className="flex justify-center text-2xl font-bold">No products available</div>}
       </div>
     </>
   );
