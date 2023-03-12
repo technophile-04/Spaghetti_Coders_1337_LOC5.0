@@ -7,6 +7,7 @@ import { ArrowUpOnSquareIcon } from "@heroicons/react/24/outline";
 import { useAccount } from "wagmi";
 import Barcode from "react-barcode";
 import { ethers } from "ethers";
+import { CheckIcon } from "@heroicons/react/20/solid";
 
 function AddProduct() {
   const { address: currAddress } = useAccount();
@@ -22,6 +23,7 @@ function AddProduct() {
   const [address, setAddress] = useState("");
   const [productUri, setProductUri] = useState("");
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false)
 
   const { writeAsync, isLoading } = useScaffoldContractWrite("SupplyChain", "addProduct", [
     {
@@ -93,6 +95,7 @@ function AddProduct() {
   async function uploadToIPFS() {
     if (!desc || !price || !image) return;
     // setLoading('loading');
+    setUploading(true)
     try {
       const jsonData = JSON.stringify({
         pinataMetadata: {
@@ -133,6 +136,7 @@ function AddProduct() {
       });
       const tokenUrl = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
       setProductUri(tokenUrl);
+      setUploading(false)
       return tokenUrl;
     } catch (error) {
       console.log("error in uploading json ", error);
@@ -145,6 +149,13 @@ function AddProduct() {
       const uri = await uploadToIPFS();
       console.log("uri ", uri);
       console.log("⚡️ ~ file: addProduct.tsx:146 ~ submit ~ uri:", uri);
+      setDesc("")
+      setPrice("")
+      setProductName("")
+      setProductType("")
+      setManuDate("")
+      setExpDate("")
+      setManuName("")
 
       toast.success("Product uploaded successfully");
     } catch (error) {
@@ -163,10 +174,12 @@ function AddProduct() {
           className="md:w-[500px] w-[300px] lg:w-[800px] bg-base-100 rounded-3xl shadow-xl border-2 "
         >
           <p className="block text-primary text-3xl mb-2 font-semibold text-center">Add Product</p>
-          <p className="font-semibold text-xl ml-1 my-0 break-words px-4">Click to upload</p>
+          {image.length === 0 && <p className="font-semibold text-xl ml-1 my-0 break-words px-4">Click to upload</p>}
           {!loading ? (
             <label className="" htmlFor="forId">
-              <ArrowUpOnSquareIcon className="h-12 mx-4 cursor-pointer w-12" />
+              {image.length === 0 && (
+                <ArrowUpOnSquareIcon className="h-12 mx-4 cursor-pointer w-12" />
+              )}             
             </label>
           ) : (
             <div className="flex justify-center">
@@ -263,7 +276,7 @@ function AddProduct() {
               />
             </div>
             <div className="my-[10px] w-full space-y-4">
-              <button className={`btn btn-primary w-full font-black`} type="submit">
+              <button className={`btn btn-primary w-full font-black ${uploading ? "loading" : ""}`} type="submit">
                 Upload to ipfs
               </button>
               <button
