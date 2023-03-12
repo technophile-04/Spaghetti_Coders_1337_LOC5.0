@@ -70,3 +70,6 @@ div.goog-te-gadget {
   height: 100%;
   font-family: "Inter", sans-serif;
 }
+.goog-te-banner-frame {
+  display: none !important;
+}

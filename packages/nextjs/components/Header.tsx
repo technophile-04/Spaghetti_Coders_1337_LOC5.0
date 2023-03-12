@@ -7,6 +7,7 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 import { ArrowUpOnSquareIcon, BanknotesIcon, UserPlusIcon } from "@heroicons/react/20/solid";
+import SmartChain from "../public/assets/SmartChain.png";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const router = useRouter();
@@ -54,7 +55,7 @@ export default function Header() {
     new window.google.translate.TranslateElement(
       {
         pageLanguage: "en",
-        // includedLanguages: "en,ms,ta,zh-CN", // include this for selected languages
+        includedLanguages: "hi,en,bn,id,fr,mr",
         layout: window.google.translate.TranslateElement.InlineLayout.VERTICAL,
       },
       "google_translate_element",
@@ -122,7 +123,7 @@ export default function Header() {
         </div>
         <div className="hidden lg:flex items-center gap-2 ml-4 mr-6">
           <Link href="/" passHref className="flex relative w-10 h-10">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
+            <Image alt="SE2 logo" className="cursor-pointer" fill src="logo.svg" />
           </Link>
           <div className="flex flex-col">
             <span className="font-bold leading-tight">Scaffold-eth</span>
