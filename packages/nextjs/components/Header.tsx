@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaucetButton } from "~~/components/scaffold-eth";
@@ -7,6 +7,7 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 import { ArrowUpOnSquareIcon, BanknotesIcon, UserPlusIcon } from "@heroicons/react/20/solid";
+import SmartChain from "../public/assets/SmartChain.png";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const router = useRouter();
@@ -31,10 +32,37 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const burgerMenuRef = useRef<HTMLDivElement>(null);
+  const [counter, setCounter] = useState(0);
   useOutsideClick(
     burgerMenuRef,
     useCallback(() => setIsDrawerOpen(false), []),
   );
+  useEffect(() => {
+    if (counter === 1) {
+      console.log("counter", counter);
+      var addScript = document.createElement("script");
+      addScript.setAttribute("src", "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit");
+      document.body.appendChild(addScript);
+      window.googleTranslateElementInit = googleTranslateElementInit;
+      setCounter(2);
+    }
+    setCounter(1);
+  }, [counter]);
+
+  const googleTranslateElementInit = () => {
+    // if (counter === 1) {
+    console.log("googleTranslateElementInit");
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        includedLanguages: "hi,en,bn,id,fr,mr",
+        layout: window.google.translate.TranslateElement.InlineLayout.VERTICAL,
+      },
+      "google_translate_element",
+    );
+    // setCounter(2);
+    // }
+  };
 
   const navLinks = (
     <>
@@ -55,9 +83,16 @@ export default function Header() {
       </li>
       <li>
         <NavLink href="/addProduct">
-          <ArrowUpOnSquareIcon className="h-4 w-4"/>
+          <ArrowUpOnSquareIcon className="h-4 w-4" />
           Add Product
         </NavLink>
+      </li>
+      <li>
+        {/* <div> */}
+        {/* <ArrowUpOnSquareIcon className="h-2 w-2" /> */}
+        {/* <p>Select Language</p> */}
+        <div className="mtx-3 focus:outline-none text-center " id="google_translate_element"></div>
+        {/* </div> */}
       </li>
     </>
   );
@@ -88,7 +123,7 @@ export default function Header() {
         </div>
         <div className="hidden lg:flex items-center gap-2 ml-4 mr-6">
           <Link href="/" passHref className="flex relative w-10 h-10">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
+            <Image alt="SE2 logo" className="cursor-pointer" fill src="logo.svg" />
           </Link>
           <div className="flex flex-col">
             <span className="font-bold leading-tight">Scaffold-eth</span>

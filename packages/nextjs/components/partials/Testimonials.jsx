@@ -37,7 +37,7 @@ function Testimonials() {
               {" "}
               Trusted by over 20,000 companies all over the world{" "}
             </h3>
-            <p className="text-xl text-gray-600" data-aos="zoom-y-out">
+            <p className="text-xl text-primary-content" data-aos="zoom-y-out">
               Revolutionize your supply chain management with our cutting-edge platform and stay ahead of the
               competition.
             </p>
@@ -133,7 +133,7 @@ function Testimonials() {
                     alt="Testimonial 01"
                   />
                 </div>
-                <blockquote className="text-xl font-medium mb-4">
+                <blockquote className="text-xl font-medium mb-4 text-primary">
                   “ The decentralized supply chain platform improved our efficiency, transparency and trust between
                   partners, resulting in increased profits. “
                 </blockquote>

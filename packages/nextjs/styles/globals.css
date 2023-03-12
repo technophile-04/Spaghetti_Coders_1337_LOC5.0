@@ -48,3 +48,28 @@ p {
 .btn.btn-ghost {
   @apply shadow-none;
 }
+
+.goog-logo-link {
+  display: none !important;
+}
+.goog-te-gadget {
+  font-size: 0px !important;
+}
+div.goog-te-gadget {
+  color: transparent !important;
+}
+#google_translate_element {
+  color: transparent;
+}
+#google_translate_element a {
+  display: none;
+}
+.goog-te-combo {
+  color: black;
+  width: 100%;
+  height: 100%;
+  font-family: "Inter", sans-serif;
+}
+.goog-te-banner-frame {
+  display: none !important;
+}

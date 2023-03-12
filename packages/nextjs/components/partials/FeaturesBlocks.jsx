@@ -21,7 +21,7 @@ function FeaturesBlocks() {
               {" "}
               How it works{" "}
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-primary-content">
               Connects stakeholders, shares info, manages flow of goods and services to meet customer demands.
             </p>
           </div>
@@ -52,7 +52,7 @@ function FeaturesBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Resilience</h4>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-primary">Resilience</h4>
               <p className="text-gray-600 text-center">
                 Connects stakeholders, streamlines flow of goods and information efficiently.
               </p>
@@ -82,7 +82,7 @@ function FeaturesBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Transparency</h4>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-primary">Transparency</h4>
               <p className="text-gray-600 text-center">
                 Connects stakeholders, streamlines flow of goods and information efficiently.
               </p>
@@ -105,7 +105,7 @@ function FeaturesBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Accountability</h4>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-primary">Accountability</h4>
               <p className="text-gray-600 text-center">
                 Connects stakeholders, streamlines flow of goods and information efficiently.
               </p>
@@ -138,7 +138,7 @@ function FeaturesBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Efficiency</h4>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-primary">Efficiency</h4>
               <p className="text-gray-600 text-center">
                 Connects stakeholders, streamlines flow of goods and information efficiently.
               </p>
@@ -158,7 +158,7 @@ function FeaturesBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Traceability</h4>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-primary">Traceability</h4>
               <p className="text-gray-600 text-center">
                 Connects stakeholders, streamlines flow of goods and information efficiently.
               </p>
@@ -190,7 +190,7 @@ function FeaturesBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Visibility</h4>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-primary">Visibility</h4>
               <p className="text-gray-600 text-center">
                 Connects stakeholders, streamlines flow of goods and information efficiently.
               </p>

@@ -363,6 +363,18 @@ const Product = () => {
           </div>
         </div>
       </div>
+      <div className="flex justify-center items-center">
+        <iframe
+          className="mt-20 w-[350px] h-[200px] md:w-[500px] md:h-[300px] lg:w-[900px] lg:h-[500px]"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.005923900639!2d72.83461397540808!3d19.107396050985795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9c676018b43%3A0x75f29a4205098f99!2sSVKM&#39;s%20Dwarkadas%20J.%20Sanghvi%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1678569755920!5m2!1sen!2sin"
+          // width="600"
+          // height="450"
+          // style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
     </>
   );
 };
