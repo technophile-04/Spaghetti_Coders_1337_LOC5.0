@@ -66,31 +66,31 @@ const data = [
 const Products = () => {
   const { data, isLoading } = useScaffoldContractRead("SupplyChain", "getAllProducts");
   console.log("⚡️ ~ file: index.tsx:68 ~ data:", data);
-  const [finalProducts, setFinalProducts] = useState([]);
+  // const [finalProducts, setFinalProducts] = useState([]);
 
-  const getFinalProducts = async () => {
-    const allProdcuts = await Promise?.all(
-      data?.map(async i => {
-        const metaDataUri = i?.productMetaDataURI;
-        const metaData = await axios.get(metaDataUri);
-        const product = {
-          ...i,
-          metaData: metaData.data,
-        };
-        return product;
-      }),
-    ).catch(e => {
-      console.log("error", e);
-    });
-    console.log("All prodcuts", allProdcuts);
+  // const getFinalProducts = async () => {
+  //   const allProdcuts = await Promise?.all(
+  //     data?.map(async i => {
+  //       const metaDataUri = i?.productMetaDataURI;
+  //       const metaData = await axios.get(metaDataUri);
+  //       const product = {
+  //         ...i,
+  //         metaData: metaData.data,
+  //       };
+  //       return product;
+  //     }),
+  //   ).catch(e => {
+  //     console.log("error", e);
+  //   });
+  //   console.log("All prodcuts", allProdcuts);
 
-    setFinalProducts(allProdcuts);
-  };
+  //   setFinalProducts(allProdcuts);
+  // };
 
-  useEffect(() => {
-    console.log("called");
-    getFinalProducts();
-  }, []);
+  // useEffect(() => {
+  //   console.log("called");
+  //   getFinalProducts();
+  // }, []);
 
   return (
     <>
@@ -109,10 +109,10 @@ const Products = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-8">
           {isLoading && <Spinner />}
           {data &&
-            finalProducts?.map(d => (
+            data?.map(d => (
               <div key={d.barcodeId} className="w-full bg-white rounded-3xl shadow-xl overflow-hidden">
                 <div className="border rounded-3xl">
-                  <img src={d?.metaData?.image} className="h-[300px] mt-1 object-contain rounded-3xl w-full"></img>
+                  <img src={d?.imageURI} className="h-[300px] mt-1 object-contain rounded-3xl w-full"></img>
                   <div className="p-4">
                     <div className="flex items-center text-[22px] justify-between">
                       <p className="font-bold text-gray-700">{d.title}</p>
