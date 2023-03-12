@@ -1,9 +1,9 @@
-import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Spinner from "~~/components/Spinner";
 import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
+import axios from "axios";
 
 const colors = {
   0: "badge-warning",
@@ -62,10 +62,35 @@ const data = [
     manufacturerName: "Xyzyu",
     productType: 0,
   },
-] as const;
-const Products: NextPage = () => {
+];
+const Products = () => {
   const { data, isLoading } = useScaffoldContractRead("SupplyChain", "getAllProducts");
   console.log("⚡️ ~ file: index.tsx:68 ~ data:", data);
+  // const [finalProducts, setFinalProducts] = useState([]);
+
+  // const getFinalProducts = async () => {
+  //   const allProdcuts = await Promise?.all(
+  //     data?.map(async i => {
+  //       const metaDataUri = i?.productMetaDataURI;
+  //       const metaData = await axios.get(metaDataUri);
+  //       const product = {
+  //         ...i,
+  //         metaData: metaData.data,
+  //       };
+  //       return product;
+  //     }),
+  //   ).catch(e => {
+  //     console.log("error", e);
+  //   });
+  //   console.log("All prodcuts", allProdcuts);
+
+  //   setFinalProducts(allProdcuts);
+  // };
+
+  // useEffect(() => {
+  //   console.log("called");
+  //   getFinalProducts();
+  // }, []);
 
   return (
     <>
@@ -84,21 +109,21 @@ const Products: NextPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-8">
           {isLoading && <Spinner />}
           {data &&
-            data.map(d => (
+            data?.map(d => (
               <div key={d.barcodeId} className="w-full bg-white rounded-3xl shadow-xl overflow-hidden">
                 <div className="border rounded-3xl">
-                  <img src={d.image} className="h-[300px] mt-1 object-contain rounded-3xl w-full"></img>
+                  <img src={d?.imageURI} className="h-[300px] mt-1 object-contain rounded-3xl w-full"></img>
                   <div className="p-4">
                     <div className="flex items-center text-[22px] justify-between">
                       <p className="font-bold text-gray-700">{d.title}</p>
-                      <p className={`text-white badge text-[17px] mr-2 ${colors[d.productType]}`}>
-                        {type[d.productType]}
+                      <p className={`text-white badge text-[17px] mr-2 ${colors[d?.productType]}`}>
+                        {type[d?.productType]}
                       </p>
                     </div>
                     <p className="text-[#7C7C80] font-[15px]">Manufacturer Name: {d?.manufacturerName}</p>
 
                     <Link
-                      href={`/products/${d.barcodeId}`}
+                      href={`/products/${d?.barcodeId}`}
                       className="block mt-10 w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-primary rounded-[14px]  focus:outline-none focus:ring focus:ring-opacity-80"
                     >
                       View Details

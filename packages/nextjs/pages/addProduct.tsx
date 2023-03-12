@@ -294,6 +294,13 @@ function AddProduct() {
               format="CODE128"
               displayValue={false}
             />
+            <div className="flex justify-center items-center gap-3 mt-2 ">
+              {/* <p className="font-bold">Press</p>
+              <kbd className="kbd">⌘</kbd>
+              <kbd className="kbd">p</kbd>
+              <p className="font-bold">To Download</p> */}
+              <p className="font-bold text-xl text-primary">For assistance on how to Download ASk our AI Assistant!!</p>
+            </div>
           </div>
         </form>
       </div>
