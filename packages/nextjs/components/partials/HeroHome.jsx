@@ -40,7 +40,7 @@ function HeroHome() {
               </span>
             </h1>
             <div className="max-w-3xl mx-auto">
-              <p className="text-xl text-gray-600 mb-8" data-aos="zoom-y-out" data-aos-delay="150">
+              <p className="text-xl text-primary-content mb-8" data-aos="zoom-y-out" data-aos-delay="150">
                 Connect, Collaborate, and Control Your Entire Supply Chain with Our Dynamic Platform - Unlocking
                 Efficiency and Boosting Your Business Growth!
               </p>
