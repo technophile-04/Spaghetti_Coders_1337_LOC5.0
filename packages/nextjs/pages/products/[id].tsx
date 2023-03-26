@@ -251,29 +251,11 @@ const Product = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="title-font font-medium text-2xl text-gray-900">₹ {200}</span>
-
-                  <label htmlFor="my-modal-6" className="flex items-center space-x-3">
-                    <div
-                      className="flex ml-auto text-white bg-primary-content border-0 py-2 px-6 focus:outline-none hover:bg-primary rounded cursor-pointer"
-                      onClick={async () => await writeAsync()}
-                    >
-                      Transfer ownership
-                    </div>
-                  </label>
-                  <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-                  <div className="modal modal-middle">
-                    <div className="modal-box">
-                      <div className="flex justify-end mb-[10px]">
-                        <label htmlFor="my-modal-6" className="text-[30px] cursor-pointer">
-                          X
-                        </label>
-                      </div>
-                      <img
-                        className="w-full h-[400px]"
-                        src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"
-                        alt="Profile"
-                      />
-                    </div>
+                  <div
+                    className="flex ml-auto text-white bg-primary-content border-0 py-2 px-6 focus:outline-none hover:bg-primary rounded cursor-pointer"
+                    onClick={async () => await writeAsync()}
+                  >
+                    Transfer ownership
                   </div>
                 </div>
               </div>

@@ -127,7 +127,6 @@ export default function Header() {
           </Link>
           <div className="flex flex-col">
             <span className="font-bold text-md leading-tight">Smart-chain</span>
-            <span className="text-xs">Ethereum dev stack</span>
           </div>
         </div>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">{navLinks}</ul>

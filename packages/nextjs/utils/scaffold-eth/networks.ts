@@ -72,6 +72,10 @@ export function getBlockExplorerTxLink(network: Network, txnHash: string) {
     blockExplorerBaseTxUrl = "https://blockscout.com/poa/xdai/tx/";
   }
 
+  if (chainId === 80001) {
+    blockExplorerBaseTxUrl = "https://polygonscan.com/tx/";
+  }
+
   const blockExplorerTxURL = blockExplorerBaseTxUrl + txnHash;
 
   return blockExplorerTxURL;
